@@ -6,8 +6,9 @@ $('#search').keyup(function() {
   var beer = "https://data.cityofboston.gov/resource/ntv7-hwjm.json"
   // Get JSON data
   $.getJSON(beer, function(data) {
-    var output = '<ul class="searchresults">';
+    var output = ''
     var earnings = [];
+    var titles = []
     var total_earnings_avg=0;
 
     $.each(data, function(key, val) {
@@ -16,10 +17,14 @@ $('#search').keyup(function() {
       if (val.title.search(myExp) != -1) {
         //put total_earnings into an array called earnings
         earnings.push(val.total_earnings);
+        titles.push(val.title);
 
       }
     });
     //change earnings from a string to a number
+    var uniqueTitles = titles.filter(function(elem, pos) {
+      return titles.indexOf(elem) == pos;
+    });
     earnings = earnings.map(Number);
     //make a variable for the total amount of earnings
     var earnings_length = earnings.length;
@@ -35,10 +40,12 @@ $('#search').keyup(function() {
     if(isNaN(total_earnings_avg)){
       output += '<h3 class="text-center">' + 'No Results Found!' + '</h3>';
     } else{
-      output += '<h3 class="text-center">' + '$' + total_earnings_avg +
-      ' is the average Salary for a ' + searchField + '</h3>';
+      output += '<h2 class="text-center">' + '$' + total_earnings_avg +
+      ' is the average Salary for a ' + searchField + '</h2>' + '</br>' + '<h3 class="text-center">'
+      + 'Job Titles in your Search Results' + '</h3>' + '<p class="text-center">' + uniqueTitles + '</p>';
     };
-    output += '</ul>';
+
+
     $('#update').html(output);
   });
 
