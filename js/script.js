@@ -5,6 +5,7 @@ $('#search').keyup(function() {
   // Url for JSON Data
   var beer = "https://data.cityofboston.gov/resource/ntv7-hwjm.json"
   // Get JSON data
+
   $.getJSON(beer, function(data) {
     var output = ''
     var earnings = [];
@@ -25,6 +26,7 @@ $('#search').keyup(function() {
     var uniqueTitles = titles.filter(function(elem, pos) {
       return titles.indexOf(elem) == pos;
     });
+
     earnings = earnings.map(Number);
     //make a variable for the total amount of earnings
     var earnings_length = earnings.length;
@@ -45,8 +47,6 @@ $('#search').keyup(function() {
       + 'Job Titles in your Search Results' + '</h3>' + '<p class="text-center">' + uniqueTitles + '</p>';
     };
 
-
     $('#update').html(output);
   });
-
 });
