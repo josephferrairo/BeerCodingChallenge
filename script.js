@@ -16,6 +16,7 @@ $('#search').keyup(function() {
       if (val.title.search(myExp) != -1) {
         //put total_earnings into an array called earnings
         earnings.push(val.total_earnings);
+
       }
     });
     //change earnings from a string to a number
@@ -29,11 +30,16 @@ $('#search').keyup(function() {
     //modify earnings to only have 2 decimal places
     total_earnings_avg = total_earnings_avg.toFixed(2);
     console.log(total_earnings_avg);
-    output += '<h2>' + '$' + total_earnings_avg + '</h2>'
-    output += '<h3>' + searchField + '</h3>'
-    $('#update').html(output);
 
+    //Check if there are any search results
+    if(isNaN(total_earnings_avg)){
+      output += '<h3 class="text-center">' + 'No Results Found!' + '</h3>';
+    } else{
+      output += '<h3 class="text-center">' + '$' + total_earnings_avg +
+      ' is the average Salary for a ' + searchField + '</h3>';
+    };
     output += '</ul>';
+    $('#update').html(output);
   });
 
 });
