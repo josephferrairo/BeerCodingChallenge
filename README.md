@@ -10,7 +10,7 @@ If I were to have some more time on this I would definitely improve the UI and p
 
 I don't have a lot of experience using Javascript, but it is a framework that I have been focusing on and I want to get better at because of how flexible it is, as well as the fact that it has an excellent community.
 
-Please checkout some of other pieces of work I am particularly proud of
+Please checkout some of the other pieces of work I am particularly proud of
 
 [ShopManager](https://github.com/josephferrairo/ShopManager)
 [OvenLogger](https://github.com/josephferrairo/Oven-Logger)
